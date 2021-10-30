@@ -83,7 +83,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     func getCurrentWeather(_ cityKey : String) -> Promise<CurrentWeather>{
         return Promise<CurrentWeather> { seal -> Void in
-            let url = "\(currentConditionURL)\(cityKey)?apikey=\(apiKey)" // build URL for current weather here
+            let url = "\(currentConditionURL)\(cityKey)?apikey=\(apiKey)" 
             
             AF.request(url).responseJSON { response in
                 

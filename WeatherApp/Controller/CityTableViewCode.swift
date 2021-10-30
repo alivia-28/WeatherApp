@@ -20,9 +20,7 @@ extension ViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let currWeatherOfCity = arrCurrentWeather[indexPath.row]
-       //        cell.textLabel?.text = "\(currWeatherOfCity.cityInfoName) \(currWeatherOfCity.weatherText) \(currWeatherOfCity.temp)°C"
                
        let cell = Bundle.main.loadNibNamed("CityTableViewCell", owner: self, options: nil)?.first as! CityTableViewCell
        cell.lblCityName.text = "\(currWeatherOfCity.cityInfoName)"

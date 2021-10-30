@@ -21,7 +21,6 @@ class SearchCityViewController: UIViewController, UISearchBarDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -35,14 +34,13 @@ class SearchCityViewController: UIViewController, UISearchBarDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //should return arrCityInfo.count
         return arrCityInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let city = arrCityInfo[indexPath.row]
-        cell.textLabel?.text = "\(city.localizedName) \(city.administrativeID), \(city.countryLocalizedName)"// You will change this to getr values from arrCityinfo and assign text
+        cell.textLabel?.text = "\(city.localizedName) \(city.administrativeID), \(city.countryLocalizedName)"
         return cell
     }
     
@@ -51,7 +49,7 @@ class SearchCityViewController: UIViewController, UISearchBarDelegate, UITableVi
     }
     
     func getCitiesFromSearch(_ searchText : String) {
-        // Network call from there
+        
         let url = getSearchURL(searchText)
         print(url)
         
@@ -78,17 +76,11 @@ class SearchCityViewController: UIViewController, UISearchBarDelegate, UITableVi
              }
                            
             self.tblView.reloadData()
-            // You will receive JSON array
-            // Parse the JSON array
-            // Add values in arrCityInfo
-            // Reload table with the values
         }
             
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        // You will get the Index of the city info from here and then add it into the realm Database
-        // Once the city is added in the realm DB pop the navigation view controller
         
         let cityDetail = arrCityInfo[indexPath.row]
         addCityInDB(cityDetail)
