@@ -100,12 +100,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let currentWeather = CurrentWeather()
                 currentWeather.cityKey = cityKey
+                //getCityNameFromDb("")
                 //currentWeather.cityInfoName = self.getCityNameFromDB(cityKey) ?? "Unnamed"
                 currentWeather.weatherText = firstWeather["WeatherText"].stringValue
                 currentWeather.epochTime = firstWeather["EpochTime"].intValue
                 currentWeather.isDayTime = firstWeather["IsDayTime"].boolValue
                 currentWeather.temp = firstWeather["Temperature"]["Metric"]["Value"].intValue
-                //currentWeather.weatherImg = firstWeather["WeatherIcon"].intValue
+                currentWeather.emoji = firstWeather["WeatherIcon"].intValue
                 seal.fulfill(currentWeather)
                 print(currentWeather.weatherText)
                 
