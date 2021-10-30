@@ -14,8 +14,6 @@ import PromiseKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let arr = ["Seattle WA, USA 54 ℉", "Delhi DL, India, 75℉"]
-    
     var arrCityInfo: [CityInfo] = [CityInfo]()
     var arrCurrentWeather : [CurrentWeather] = [CurrentWeather]()
     
@@ -62,7 +60,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    func getCityNameFromDb(_ cityKey : String) -> String?{
+    func getCityNameFromDB(_ cityKey : String) -> String?{
        do{
            let realm = try Realm()
            let city = realm.object(ofType: CityInfo.self, forPrimaryKey: cityKey)
@@ -86,7 +84,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
                 
                 let weatherJSON = JSON(response.data!).array
-                print(weatherJSON)
                 
                 guard let firstWeather = weatherJSON!.first else {seal.fulfill(CurrentWeather())
                     return
