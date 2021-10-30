@@ -31,12 +31,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func loadCurrentCondition() {
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        
-        // Read all the values from realm DB and fill up the arrCityInfo
-                // for each city info het the city key and make a NW call to current weather condition
-                // wait for all the promises to be fulfilled
-                // Once all the promises are fulfilled fill the arrCurrentWeather array
-                // call for reload of tableView
                 
              do{
                   let realm = try Realm()
@@ -100,8 +94,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let currentWeather = CurrentWeather()
                 currentWeather.cityKey = cityKey
-                //getCityNameFromDb("")
-                //currentWeather.cityInfoName = self.getCityNameFromDB(cityKey) ?? "Unnamed"
+                currentWeather.cityInfoName = firstWeather["CityInfoName"].stringValue
                 currentWeather.weatherText = firstWeather["WeatherText"].stringValue
                 currentWeather.epochTime = firstWeather["EpochTime"].intValue
                 currentWeather.isDayTime = firstWeather["IsDayTime"].boolValue
